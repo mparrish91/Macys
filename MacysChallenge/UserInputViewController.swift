@@ -8,14 +8,12 @@
 
 import UIKit
 
-final class UserInputViewController: UIViewController, UITextFieldDelegate, URLSessionDelegate, URLSessionDataDelegate, URLSessionTaskDelegate {
+final class UserInputViewController: UIViewController {
 
     fileprivate var inputTextField: UITextField
     fileprivate var titleLabel: UILabel
     fileprivate var submitButton: UIButton
     
-    
-    var handler: ((_ success: Bool, _ object: AnyObject?) -> ())?
     
     required convenience init?(coder aDecoder: NSCoder) {
         self.init(aDecoder)
@@ -56,20 +54,16 @@ final class UserInputViewController: UIViewController, UITextFieldDelegate, URLS
         submitButton.layer.borderWidth = 0.0
         submitButton.titleLabel?.textColor = UIColor.white
         
-        
         submitButton.isHidden = true
         submitButton.addTarget(self, action: #selector(onSubmitButtonPressed), for: .touchUpInside)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(UserInputViewController.presentBadRequestAlert), name: NSNotification.Name(rawValue: "invalidInput"), object: nil)
+
+        
         setConstraints()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(UserInputViewController.presentBadInputAlert), name: NSNotification.Name(rawValue: "badCity"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(UserInputViewController.presentBadRequestAlert), name: NSNotification.Name(rawValue: "badRequest"), object: nil)
-        
     }
     
     
-
-
     override func loadView() {
         self.view = UIView()
         self.view.addSubview(inputTextField)
@@ -81,7 +75,10 @@ final class UserInputViewController: UIViewController, UITextFieldDelegate, URLS
     func onSubmitButtonPressed(_ sender: UIButton) {
         
         if let inputText = inputTextField.text {
-            NetworkingHelper.sharedInstance.retrieveMeanings(inputText.removeWhitespace()) { (data, error) in
+            Meaning.retrieveMeanings(inputText.removeWhitespace()) { (data, error) in
+                
+                let x = data
+                print(x)
                 
 //                if let weatherVC = WMWeatherCollectionViewController(forecasts: data) {
 //                    DispatchQueue.main.async(execute: {
@@ -93,43 +90,12 @@ final class UserInputViewController: UIViewController, UITextFieldDelegate, URLS
     }
     
     
-    func presentBadInputAlert() {
-        
-        let alertController = UIAlertController(title: nil, message: "oops looks like that city is not supported", preferredStyle: .actionSheet)
-        alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) -> Void in
-        }))
-        
-        present(alertController, animated: true, completion: nil)
-        
-    }
-    
-    
     func presentBadRequestAlert() {
-        
-        let alertController = UIAlertController(title: nil, message: "oops something went wrong. Please try again", preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: nil, message: "oops looks like that acronym or initialism is not supported", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) -> Void in
         }))
         
         present(alertController, animated: true, completion: nil)
-        
-    }
-
-    
-    //MARK: UITextFieldDelegate
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if (textField.text?.characters.count)! > 0 {
-            submitButton.isHidden = false
-            
-        }
-        return true
-    }
-    
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        
-        return true
     }
 
 
@@ -145,7 +111,6 @@ final class UserInputViewController: UIViewController, UITextFieldDelegate, URLS
         titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         titleLabel.topAnchor.constraint(equalTo: margins.topAnchor, constant: 100).isActive = true
         
-        
         inputTextField.translatesAutoresizingMaskIntoConstraints = false
         inputTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 100).isActive = true
         inputTextField.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 20).isActive = true
@@ -154,14 +119,26 @@ final class UserInputViewController: UIViewController, UITextFieldDelegate, URLS
         submitButton.translatesAutoresizingMaskIntoConstraints = false
         submitButton.topAnchor.constraint(equalTo: inputTextField.layoutMarginsGuide.bottomAnchor, constant: 50).isActive = true
         submitButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        
-        self.view.layoutIfNeeded()
-        
     }
-
-
-
-
-
-
 }
+
+
+
+extension UserInputViewController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if (textField.text?.characters.count)! > 0 {
+            submitButton.isHidden = false
+            
+        }
+        return true
+    }
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
+}
+    
