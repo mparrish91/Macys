@@ -1,0 +1,412 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		428428371E841AEF00DB593F /* MeaningObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428428361E841AEF00DB593F /* MeaningObject.swift */; };
+		428428391E8424D400DB593F /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428428381E8424D400DB593F /* StringExtensions.swift */; };
+		4284283C1E84264A00DB593F /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4284283B1E84264A00DB593F /* UIColorExtensions.swift */; };
+		429FFA421E830CC0007434D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429FFA411E830CC0007434D6 /* AppDelegate.swift */; };
+		429FFA441E830CC0007434D6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429FFA431E830CC0007434D6 /* ViewController.swift */; };
+		429FFA471E830CC0007434D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 429FFA451E830CC0007434D6 /* Main.storyboard */; };
+		429FFA491E830CC0007434D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 429FFA481E830CC0007434D6 /* Assets.xcassets */; };
+		429FFA4C1E830CC0007434D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 429FFA4A1E830CC0007434D6 /* LaunchScreen.storyboard */; };
+		429FFA541E830CDA007434D6 /* NetworkingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429FFA531E830CDA007434D6 /* NetworkingHelper.swift */; };
+		429FFA581E830DF2007434D6 /* UserInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429FFA571E830DF2007434D6 /* UserInputViewController.swift */; };
+		9F4AC900D7BABF11F49176C1 /* Pods_MacysChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FC3A777E4E4089F30E13753 /* Pods_MacysChallenge.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		09EA158189B9707F174BCDAC /* Pods-MacysChallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacysChallenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MacysChallenge/Pods-MacysChallenge.debug.xcconfig"; sourceTree = "<group>"; };
+		3FC3A777E4E4089F30E13753 /* Pods_MacysChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MacysChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		428428361E841AEF00DB593F /* MeaningObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeaningObject.swift; sourceTree = "<group>"; };
+		428428381E8424D400DB593F /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		4284283B1E84264A00DB593F /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
+		429FFA3E1E830CC0007434D6 /* MacysChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacysChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		429FFA411E830CC0007434D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		429FFA431E830CC0007434D6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		429FFA461E830CC0007434D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		429FFA481E830CC0007434D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		429FFA4B1E830CC0007434D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		429FFA4D1E830CC0007434D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		429FFA531E830CDA007434D6 /* NetworkingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingHelper.swift; sourceTree = "<group>"; };
+		429FFA571E830DF2007434D6 /* UserInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInputViewController.swift; sourceTree = "<group>"; };
+		BBD2D1862F9301EE01CBF6A2 /* Pods-MacysChallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacysChallenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-MacysChallenge/Pods-MacysChallenge.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		429FFA3B1E830CC0007434D6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F4AC900D7BABF11F49176C1 /* Pods_MacysChallenge.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0CAE2037F7E25421967B6D39 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				09EA158189B9707F174BCDAC /* Pods-MacysChallenge.debug.xcconfig */,
+				BBD2D1862F9301EE01CBF6A2 /* Pods-MacysChallenge.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		4284283A1E84263300DB593F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				428428381E8424D400DB593F /* StringExtensions.swift */,
+				4284283B1E84264A00DB593F /* UIColorExtensions.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		429FFA351E830CC0007434D6 = {
+			isa = PBXGroup;
+			children = (
+				429FFA401E830CC0007434D6 /* MacysChallenge */,
+				429FFA3F1E830CC0007434D6 /* Products */,
+				0CAE2037F7E25421967B6D39 /* Pods */,
+				C7E3DFB301F601B489D8BA7C /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		429FFA3F1E830CC0007434D6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				429FFA3E1E830CC0007434D6 /* MacysChallenge.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		429FFA401E830CC0007434D6 /* MacysChallenge */ = {
+			isa = PBXGroup;
+			children = (
+				429FFA411E830CC0007434D6 /* AppDelegate.swift */,
+				429FFA431E830CC0007434D6 /* ViewController.swift */,
+				429FFA531E830CDA007434D6 /* NetworkingHelper.swift */,
+				428428361E841AEF00DB593F /* MeaningObject.swift */,
+				429FFA571E830DF2007434D6 /* UserInputViewController.swift */,
+				4284283A1E84263300DB593F /* Helpers */,
+				429FFA451E830CC0007434D6 /* Main.storyboard */,
+				429FFA481E830CC0007434D6 /* Assets.xcassets */,
+				429FFA4A1E830CC0007434D6 /* LaunchScreen.storyboard */,
+				429FFA4D1E830CC0007434D6 /* Info.plist */,
+			);
+			path = MacysChallenge;
+			sourceTree = "<group>";
+		};
+		C7E3DFB301F601B489D8BA7C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3FC3A777E4E4089F30E13753 /* Pods_MacysChallenge.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		429FFA3D1E830CC0007434D6 /* MacysChallenge */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 429FFA501E830CC0007434D6 /* Build configuration list for PBXNativeTarget "MacysChallenge" */;
+			buildPhases = (
+				2A57C14EC82A545AD77FEF6B /* [CP] Check Pods Manifest.lock */,
+				429FFA3A1E830CC0007434D6 /* Sources */,
+				429FFA3B1E830CC0007434D6 /* Frameworks */,
+				429FFA3C1E830CC0007434D6 /* Resources */,
+				D5FC397490C1F74F93471CDA /* [CP] Embed Pods Frameworks */,
+				22AC044E1F5266E748E87504 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MacysChallenge;
+			productName = MacysChallenge;
+			productReference = 429FFA3E1E830CC0007434D6 /* MacysChallenge.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		429FFA361E830CC0007434D6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = parry;
+				TargetAttributes = {
+					429FFA3D1E830CC0007434D6 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 429FFA391E830CC0007434D6 /* Build configuration list for PBXProject "MacysChallenge" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 429FFA351E830CC0007434D6;
+			productRefGroup = 429FFA3F1E830CC0007434D6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				429FFA3D1E830CC0007434D6 /* MacysChallenge */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		429FFA3C1E830CC0007434D6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				429FFA4C1E830CC0007434D6 /* LaunchScreen.storyboard in Resources */,
+				429FFA491E830CC0007434D6 /* Assets.xcassets in Resources */,
+				429FFA471E830CC0007434D6 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		22AC044E1F5266E748E87504 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MacysChallenge/Pods-MacysChallenge-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2A57C14EC82A545AD77FEF6B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D5FC397490C1F74F93471CDA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MacysChallenge/Pods-MacysChallenge-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		429FFA3A1E830CC0007434D6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				429FFA541E830CDA007434D6 /* NetworkingHelper.swift in Sources */,
+				429FFA441E830CC0007434D6 /* ViewController.swift in Sources */,
+				428428391E8424D400DB593F /* StringExtensions.swift in Sources */,
+				429FFA421E830CC0007434D6 /* AppDelegate.swift in Sources */,
+				428428371E841AEF00DB593F /* MeaningObject.swift in Sources */,
+				429FFA581E830DF2007434D6 /* UserInputViewController.swift in Sources */,
+				4284283C1E84264A00DB593F /* UIColorExtensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		429FFA451E830CC0007434D6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				429FFA461E830CC0007434D6 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		429FFA4A1E830CC0007434D6 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				429FFA4B1E830CC0007434D6 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		429FFA4E1E830CC0007434D6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		429FFA4F1E830CC0007434D6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		429FFA511E830CC0007434D6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 09EA158189B9707F174BCDAC /* Pods-MacysChallenge.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = MacysChallenge/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = SevenMile.MacysChallenge;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		429FFA521E830CC0007434D6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BBD2D1862F9301EE01CBF6A2 /* Pods-MacysChallenge.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = MacysChallenge/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = SevenMile.MacysChallenge;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		429FFA391E830CC0007434D6 /* Build configuration list for PBXProject "MacysChallenge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				429FFA4E1E830CC0007434D6 /* Debug */,
+				429FFA4F1E830CC0007434D6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		429FFA501E830CC0007434D6 /* Build configuration list for PBXNativeTarget "MacysChallenge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				429FFA511E830CC0007434D6 /* Debug */,
+				429FFA521E830CC0007434D6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 429FFA361E830CC0007434D6 /* Project object */;
+}
