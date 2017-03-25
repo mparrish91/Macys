@@ -20,8 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.isStatusBarHidden = true
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = UserInputViewController()
+        window?.rootViewController = SearchViewController()
         window?.makeKeyAndVisible()
+        
+//        setStatusBarBackgroundColor(color: UIColor.black)
+
 
         
         return true
@@ -59,6 +62,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func setStatusBarBackgroundColor(color: UIColor) {
+        
+        guard let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView else { return }
+        
+        statusBar.backgroundColor = color
     }
 
 

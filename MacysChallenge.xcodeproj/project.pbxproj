@@ -11,11 +11,10 @@
 		428428391E8424D400DB593F /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428428381E8424D400DB593F /* StringExtensions.swift */; };
 		4284283C1E84264A00DB593F /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4284283B1E84264A00DB593F /* UIColorExtensions.swift */; };
 		429FFA421E830CC0007434D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429FFA411E830CC0007434D6 /* AppDelegate.swift */; };
-		429FFA441E830CC0007434D6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429FFA431E830CC0007434D6 /* ViewController.swift */; };
 		429FFA471E830CC0007434D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 429FFA451E830CC0007434D6 /* Main.storyboard */; };
 		429FFA491E830CC0007434D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 429FFA481E830CC0007434D6 /* Assets.xcassets */; };
 		429FFA4C1E830CC0007434D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 429FFA4A1E830CC0007434D6 /* LaunchScreen.storyboard */; };
-		429FFA581E830DF2007434D6 /* UserInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429FFA571E830DF2007434D6 /* UserInputViewController.swift */; };
+		429FFA581E830DF2007434D6 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429FFA571E830DF2007434D6 /* SearchViewController.swift */; };
 		42A653021E85ED4500F8E7AC /* MeaningTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A653011E85ED4500F8E7AC /* MeaningTableViewCell.swift */; };
 		9F4AC900D7BABF11F49176C1 /* Pods_MacysChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FC3A777E4E4089F30E13753 /* Pods_MacysChallenge.framework */; };
 /* End PBXBuildFile section */
@@ -28,12 +27,11 @@
 		4284283B1E84264A00DB593F /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		429FFA3E1E830CC0007434D6 /* MacysChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacysChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		429FFA411E830CC0007434D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		429FFA431E830CC0007434D6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		429FFA461E830CC0007434D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		429FFA481E830CC0007434D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		429FFA4B1E830CC0007434D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		429FFA4D1E830CC0007434D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		429FFA571E830DF2007434D6 /* UserInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInputViewController.swift; sourceTree = "<group>"; };
+		429FFA571E830DF2007434D6 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		42A653011E85ED4500F8E7AC /* MeaningTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeaningTableViewCell.swift; sourceTree = "<group>"; };
 		BBD2D1862F9301EE01CBF6A2 /* Pods-MacysChallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacysChallenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-MacysChallenge/Pods-MacysChallenge.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -90,9 +88,8 @@
 			isa = PBXGroup;
 			children = (
 				429FFA411E830CC0007434D6 /* AppDelegate.swift */,
-				429FFA431E830CC0007434D6 /* ViewController.swift */,
 				428428361E841AEF00DB593F /* Meaning.swift */,
-				429FFA571E830DF2007434D6 /* UserInputViewController.swift */,
+				429FFA571E830DF2007434D6 /* SearchViewController.swift */,
 				42A653011E85ED4500F8E7AC /* MeaningTableViewCell.swift */,
 				4284283A1E84263300DB593F /* Helpers */,
 				429FFA451E830CC0007434D6 /* Main.storyboard */,
@@ -234,12 +231,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				429FFA441E830CC0007434D6 /* ViewController.swift in Sources */,
 				428428391E8424D400DB593F /* StringExtensions.swift in Sources */,
 				429FFA421E830CC0007434D6 /* AppDelegate.swift in Sources */,
 				428428371E841AEF00DB593F /* Meaning.swift in Sources */,
 				42A653021E85ED4500F8E7AC /* MeaningTableViewCell.swift in Sources */,
-				429FFA581E830DF2007434D6 /* UserInputViewController.swift in Sources */,
+				429FFA581E830DF2007434D6 /* SearchViewController.swift in Sources */,
 				4284283C1E84264A00DB593F /* UIColorExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

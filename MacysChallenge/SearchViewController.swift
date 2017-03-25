@@ -1,5 +1,5 @@
 //
-//  UserInputViewController.swift
+//  SearchViewController.swift
 //  MacysChallenge
 //
 //  Created by parry on 3/22/17.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-final class UserInputViewController: UIViewController {
+final class SearchViewController: UIViewController {
 
     fileprivate var meaningsTableView: UITableView
     fileprivate var meanings: [Meaning]?
-    fileprivate var refreshControl: UIRefreshControl
+    fileprivate let searchController = UISearchController(searchResultsController: nil)
 
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -21,7 +21,6 @@ final class UserInputViewController: UIViewController {
     
     init?(_ coder: NSCoder? = nil) {
         self.meaningsTableView = UITableView()
-        self.refreshControl = UIRefreshControl()
         
         if let coder = coder {
             super.init(coder: coder)
@@ -36,18 +35,31 @@ final class UserInputViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(netHex: 0x1695A3)
         
         let cellIdentifier = "cell"
         meaningsTableView.register(MeaningTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         meaningsTableView.delegate = self
         meaningsTableView.dataSource = self
-        meaningsTableView.addSubview(refreshControl)
-//        refreshControl.addTarget(self, action: nil, for: UIControlEventValueChanged)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(UserInputViewController.presentBadRequestAlert), name: NSNotification.Name(rawValue: "invalidInput"), object: nil)
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        meaningsTableView.tableHeaderView = searchController.searchBar
+        
+        searchController.searchBar.setBackgroundImage(#imageLiteral(resourceName: "image"), for: .any, barMetrics: .default)
+        searchController.searchBar.scopeBarBackgroundImage = #imageLiteral(resourceName: "image")
+        searchController.searchBar.tintColor = .white
+
+        
+        meaningsTableView.backgroundColor = UIColor.black
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(SearchViewController.presentBadRequestAlert), name: NSNotification.Name(rawValue: "invalidInput"), object: nil)
         
         setConstraints()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     
@@ -56,7 +68,6 @@ final class UserInputViewController: UIViewController {
         self.view.addSubview(meaningsTableView)
     }
 
-    
     
     func presentBadRequestAlert() {
         let alertController = UIAlertController(title: nil, message: "oops looks like that acronym or initialism is not supported", preferredStyle: .alert)
@@ -71,21 +82,18 @@ final class UserInputViewController: UIViewController {
 
     func setConstraints() {
         
-        let margins = view.layoutMarginsGuide
-        
-        view.translatesAutoresizingMaskIntoConstraints = true
-        
         meaningsTableView.translatesAutoresizingMaskIntoConstraints = false
-        meaningsTableView.topAnchor.constraint(equalTo: margins.topAnchor, constant: 100).isActive = true
-        meaningsTableView.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
-        meaningsTableView.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
-        meaningsTableView.bottomAnchor.constraint(equalTo: margins.bottomAnchor).isActive = true
+        
+        meaningsTableView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
+        meaningsTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        meaningsTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        meaningsTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
 }
 
 
 
-extension UserInputViewController: UITableViewDelegate, UITableViewDataSource {
+extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return meanings?.count ?? 0
     }
@@ -97,11 +105,6 @@ extension UserInputViewController: UITableViewDelegate, UITableViewDataSource {
         //sure the downcast will succeed
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! MeaningTableViewCell
         
-//        guard let meanings = meanings else {
-//            return
-//        }
-        
-        
         if let meanings = meanings {
             let meaning = meanings[indexPath.row]
 //            cell.frequencyLabel = meaning.frequency
@@ -110,13 +113,11 @@ extension UserInputViewController: UITableViewDelegate, UITableViewDataSource {
 
         }
         
-
         return cell
-        
     }
 }
 
-extension UserInputViewController: UISearchResultsUpdating {
+extension SearchViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         if let query = searchController.searchBar.text, !query.isEmpty {
             Meaning.retrieveMeanings(query, completionHandler: { (meanings, error) in
