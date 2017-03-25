@@ -10,19 +10,18 @@ import UIKit
 
 final class UserInputViewController: UIViewController {
 
-    fileprivate var inputTextField: UITextField
-    fileprivate var titleLabel: UILabel
-    fileprivate var submitButton: UIButton
-    
+    fileprivate var meaningsTableView: UITableView
+    fileprivate var meanings: [Meaning]?
+    fileprivate var refreshControl: UIRefreshControl
+
     
     required convenience init?(coder aDecoder: NSCoder) {
         self.init(aDecoder)
     }
     
     init?(_ coder: NSCoder? = nil) {
-        self.inputTextField = UITextField()
-        self.titleLabel = UILabel()
-        self.submitButton = UIButton()
+        self.meaningsTableView = UITableView()
+        self.refreshControl = UIRefreshControl()
         
         if let coder = coder {
             super.init(coder: coder)
@@ -39,26 +38,14 @@ final class UserInputViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor(netHex: 0x1695A3)
         
-        titleLabel.text = "Meanings"
-        titleLabel.font = UIFont(name: "Avenir-Book", size: 36)
-        titleLabel.textColor = UIColor.white
-        
-        inputTextField.font = UIFont(name: "Avenir-Book", size: 16)
-        inputTextField.textColor = UIColor.white
-        inputTextField.attributedPlaceholder = NSAttributedString(string:"Type here to enter an acronym or initialism", attributes: [NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName :UIFont(name: "Avenir-Book", size: 16)!])
-        inputTextField.textAlignment = .center
-        inputTextField.delegate = self
-        
-        submitButton.setTitle("Submit", for: UIControlState())
-        submitButton.titleLabel?.font = UIFont(name: "Avenir-Book", size: 20)
-        submitButton.layer.borderWidth = 0.0
-        submitButton.titleLabel?.textColor = UIColor.white
-        
-        submitButton.isHidden = true
-        submitButton.addTarget(self, action: #selector(onSubmitButtonPressed), for: .touchUpInside)
+        let cellIdentifier = "cell"
+        meaningsTableView.register(MeaningTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+        meaningsTableView.delegate = self
+        meaningsTableView.dataSource = self
+        meaningsTableView.addSubview(refreshControl)
+//        refreshControl.addTarget(self, action: nil, for: UIControlEventValueChanged)
         
         NotificationCenter.default.addObserver(self, selector: #selector(UserInputViewController.presentBadRequestAlert), name: NSNotification.Name(rawValue: "invalidInput"), object: nil)
-
         
         setConstraints()
     }
@@ -66,28 +53,9 @@ final class UserInputViewController: UIViewController {
     
     override func loadView() {
         self.view = UIView()
-        self.view.addSubview(inputTextField)
-        self.view.addSubview(titleLabel)
-        self.view.addSubview(submitButton)
+        self.view.addSubview(meaningsTableView)
     }
 
-    
-    func onSubmitButtonPressed(_ sender: UIButton) {
-        
-        if let inputText = inputTextField.text {
-            Meaning.retrieveMeanings(inputText.removeWhitespace()) { (data, error) in
-                
-                let x = data
-                print(x)
-                
-//                if let weatherVC = WMWeatherCollectionViewController(forecasts: data) {
-//                    DispatchQueue.main.async(execute: {
-//                        self.present(weatherVC, animated: true, completion: nil)
-//                    })
-//                }
-            }
-        }
-    }
     
     
     func presentBadRequestAlert() {
@@ -107,38 +75,56 @@ final class UserInputViewController: UIViewController {
         
         view.translatesAutoresizingMaskIntoConstraints = true
         
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: margins.topAnchor, constant: 100).isActive = true
-        
-        inputTextField.translatesAutoresizingMaskIntoConstraints = false
-        inputTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 100).isActive = true
-        inputTextField.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 20).isActive = true
-        inputTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        
-        submitButton.translatesAutoresizingMaskIntoConstraints = false
-        submitButton.topAnchor.constraint(equalTo: inputTextField.layoutMarginsGuide.bottomAnchor, constant: 50).isActive = true
-        submitButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        meaningsTableView.translatesAutoresizingMaskIntoConstraints = false
+        meaningsTableView.topAnchor.constraint(equalTo: margins.topAnchor, constant: 100).isActive = true
+        meaningsTableView.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
+        meaningsTableView.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
+        meaningsTableView.bottomAnchor.constraint(equalTo: margins.bottomAnchor).isActive = true
     }
 }
 
 
 
-extension UserInputViewController: UITextFieldDelegate {
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if (textField.text?.characters.count)! > 0 {
-            submitButton.isHidden = false
-            
-        }
-        return true
+extension UserInputViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return meanings?.count ?? 0
     }
     
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        return true
+        let cellIdentifier = "cell"
+        
+        //sure the downcast will succeed
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! MeaningTableViewCell
+        
+//        guard let meanings = meanings else {
+//            return
+//        }
+        
+        
+        if let meanings = meanings {
+            let meaning = meanings[indexPath.row]
+//            cell.frequencyLabel = meaning.frequency
+//            cell.sinceLabel = meaning.since
+            cell.meaningLabel.text = meaning.longForm
+
+        }
+        
+
+        return cell
+        
+    }
+}
+
+extension UserInputViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        if let query = searchController.searchBar.text, !query.isEmpty {
+            Meaning.retrieveMeanings(query, completionHandler: { (meanings, error) in
+                self.meanings = meanings
+                self.meaningsTableView.reloadData()
+            })
+
+        }
     }
 }
     
