@@ -51,6 +51,8 @@ extension Meaning {
                 if let dataSource = json.first as? [String:AnyObject] {
                     
                     //access the "lfs" or long form key which has an array of result objects
+                    
+                    //chose to only grab the representative form and not the variations
                     if let meaningArray = dataSource["lfs"] as? [[String:AnyObject]] {
                         for case let result in meaningArray {
                             if let meaning = Meaning(json: result) {
@@ -63,9 +65,6 @@ extension Meaning {
                 } else {
                     let error = NSError(domain: "Invalid Input", code: 123, userInfo: nil)
                     completionHandler(meanings, error)
-
-//                    NotificationCenter.default.post(name: Notification.Name(rawValue: "invalidInput"), object: nil)
-                    
                 }
             }
         }

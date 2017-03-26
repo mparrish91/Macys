@@ -8,6 +8,10 @@
 
 import UIKit
 
+struct constants {
+    static let lowerLabelSpacing = 5
+}
+
 class MeaningTableViewCell: UITableViewCell {
     
     var meaningLabel: UILabel
@@ -29,7 +33,6 @@ class MeaningTableViewCell: UITableViewCell {
 
     }
     
-    
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -43,23 +46,26 @@ class MeaningTableViewCell: UITableViewCell {
     func setConstraints() {
         let margins = contentView.layoutMarginsGuide
         
+        //position meaning label along the horizontal center and off the leading edge
         meaningLabel.translatesAutoresizingMaskIntoConstraints = false
-        meaningLabel.centerXAnchor.constraint(equalTo: margins.centerXAnchor).isActive = true
+        meaningLabel.centerYAnchor.constraint(equalTo: margins.centerYAnchor).isActive = true
         meaningLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 3).isActive = true
         meaningLabel.font = UIFont(name: "Avenir-Book", size: 14)
         meaningLabel.textColor = UIColor.white
         
-//        frequencyLabel.translatesAutoresizingMaskIntoConstraints = false
-//        meaningLabel.centerXAnchor.constraint(equalTo: margins.centerXAnchor).isActive = true
-//        frequencyLabel.trailingAnchor.constraint(equalTo: sinceLabel.leadingAnchor, constant: 3).isActive = true
-//        frequencyLabel.font = UIFont(name: "Avenir-Book", size: 14)
-//        frequencyLabel.textColor = UIColor.white
-//        
-//        sinceLabel.translatesAutoresizingMaskIntoConstraints = false
-//        meaningLabel.centerXAnchor.constraint(equalTo: margins.centerXAnchor).isActive = true
-//        sinceLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: 3).isActive = true
-//        sinceLabel.font = UIFont(name: "Avenir-Book", size: 14)
-//        sinceLabel.textColor = UIColor.white
+        //position freq label under the position label, with similar leading edge
+        frequencyLabel.translatesAutoresizingMaskIntoConstraints = false
+        frequencyLabel.leadingAnchor.constraint(equalTo: meaningLabel.leadingAnchor).isActive = true
+        frequencyLabel.topAnchor.constraint(equalTo: meaningLabel.bottomAnchor).isActive = true
+        frequencyLabel.font = UIFont(name: "Avenir-Book", size: 8)
+        frequencyLabel.textColor = UIColor.white
+
+        //position since label under the position label, with  leading edge against freq label
+        sinceLabel.translatesAutoresizingMaskIntoConstraints = false
+        sinceLabel.leadingAnchor.constraint(equalTo: frequencyLabel.trailingAnchor, constant: CGFloat(constants.lowerLabelSpacing.hashValue)).isActive = true
+        sinceLabel.topAnchor.constraint(equalTo: meaningLabel.bottomAnchor).isActive = true
+        sinceLabel.font = UIFont(name: "Avenir-Book", size: 8)
+        sinceLabel.textColor = UIColor.white
     }
 
 }

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		428428371E841AEF00DB593F /* Meaning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428428361E841AEF00DB593F /* Meaning.swift */; };
 		428428391E8424D400DB593F /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428428381E8424D400DB593F /* StringExtensions.swift */; };
-		4284283C1E84264A00DB593F /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4284283B1E84264A00DB593F /* UIColorExtensions.swift */; };
 		429FFA421E830CC0007434D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429FFA411E830CC0007434D6 /* AppDelegate.swift */; };
 		429FFA471E830CC0007434D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 429FFA451E830CC0007434D6 /* Main.storyboard */; };
 		429FFA491E830CC0007434D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 429FFA481E830CC0007434D6 /* Assets.xcassets */; };
@@ -24,7 +23,6 @@
 		3FC3A777E4E4089F30E13753 /* Pods_MacysChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MacysChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		428428361E841AEF00DB593F /* Meaning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meaning.swift; sourceTree = "<group>"; };
 		428428381E8424D400DB593F /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
-		4284283B1E84264A00DB593F /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		429FFA3E1E830CC0007434D6 /* MacysChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacysChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		429FFA411E830CC0007434D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		429FFA461E830CC0007434D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -61,7 +59,6 @@
 			isa = PBXGroup;
 			children = (
 				428428381E8424D400DB593F /* StringExtensions.swift */,
-				4284283B1E84264A00DB593F /* UIColorExtensions.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -236,7 +233,6 @@
 				428428371E841AEF00DB593F /* Meaning.swift in Sources */,
 				42A653021E85ED4500F8E7AC /* MeaningTableViewCell.swift in Sources */,
 				429FFA581E830DF2007434D6 /* SearchViewController.swift in Sources */,
-				4284283C1E84264A00DB593F /* UIColorExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

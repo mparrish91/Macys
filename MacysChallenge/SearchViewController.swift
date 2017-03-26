@@ -4,7 +4,8 @@
 //
 //  Created by parry on 3/22/17.
 //  Copyright © 2017 parry. All rights reserved.
-//
+// 
+// This viewcontroller allows a user to search for an acroynym.  The search is managed by a SearchController. The UISearchResultsUpdating protocol allows for continous searching while the user is typing.  This is a common practice today and I believe the best user experience. Because of the speed of the search I did not see a need for a ProgressHUD
 
 import UIKit
 
@@ -32,7 +33,6 @@ final class SearchViewController: UIViewController {
     
 
     // MARK: UIViewController
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,27 +40,24 @@ final class SearchViewController: UIViewController {
         meaningsTableView.register(MeaningTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         meaningsTableView.delegate = self
         meaningsTableView.dataSource = self
+        meaningsTableView.backgroundColor = UIColor.black
+
         
+        //searchController
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         meaningsTableView.tableHeaderView = searchController.searchBar
-        
+        searchController.searchBar.delegate = self
         searchController.searchBar.setBackgroundImage(#imageLiteral(resourceName: "image"), for: .any, barMetrics: .default)
         searchController.searchBar.scopeBarBackgroundImage = #imageLiteral(resourceName: "image")
         searchController.searchBar.tintColor = .white
-        
+        searchController.searchBar.placeholder = "search for an acronym or initialism"
         let attributes = [
             NSForegroundColorAttributeName : UIColor.white,
             NSFontAttributeName : UIFont(name: "Avenir-Book", size: 14)
         ]
         UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes(attributes, for: .normal)
-
-
-        
-        meaningsTableView.backgroundColor = UIColor.black
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(SearchViewController.presentBadRequestAlert), name: NSNotification.Name(rawValue: "invalidInput"), object: nil)
         
         setConstraints()
     }
@@ -76,17 +73,9 @@ final class SearchViewController: UIViewController {
     }
 
     
-    func presentBadRequestAlert() {
-        let alertController = UIAlertController(title: nil, message: "oops looks like that acronym or initialism is not supported", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) -> Void in
-        }))
-        
-        present(alertController, animated: true, completion: nil)
-    }
 
 
     //MARK: AutoLayout
-
     func setConstraints() {
         
         meaningsTableView.translatesAutoresizingMaskIntoConstraints = false
@@ -114,8 +103,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         
         if let meanings = meanings {
             let meaning = meanings[indexPath.row]
-//            cell.frequencyLabel = meaning.frequency
-//            cell.sinceLabel = meaning.since
+            cell.frequencyLabel.text = "frequency: " + String(meaning.frequency)
+            cell.sinceLabel.text = "since: " + String(meaning.since)
             cell.meaningLabel.text = meaning.longForm
 
         }
@@ -153,6 +142,11 @@ extension SearchViewController:UISearchBarDelegate {
         // Hide the cancel button
         searchBar.showsCancelButton = false
         // You could also change the position, frame etc of the searchBar
+        
+        //clear datasource
+        self.meanings = nil
+        self.meaningsTableView.reloadData()
+
     }
 }
-    
+
