@@ -49,6 +49,13 @@ final class SearchViewController: UIViewController {
         searchController.searchBar.setBackgroundImage(#imageLiteral(resourceName: "image"), for: .any, barMetrics: .default)
         searchController.searchBar.scopeBarBackgroundImage = #imageLiteral(resourceName: "image")
         searchController.searchBar.tintColor = .white
+        
+        let attributes = [
+            NSForegroundColorAttributeName : UIColor.white,
+            NSFontAttributeName : UIFont(name: "Avenir-Book", size: 14)
+        ]
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes(attributes, for: .normal)
+
 
         
         meaningsTableView.backgroundColor = UIColor.black
@@ -121,11 +128,31 @@ extension SearchViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         if let query = searchController.searchBar.text, !query.isEmpty {
             Meaning.retrieveMeanings(query, completionHandler: { (meanings, error) in
-                self.meanings = meanings
-                self.meaningsTableView.reloadData()
+                
+                if error == nil {
+                    self.meanings = meanings
+                    self.meaningsTableView.reloadData()
+                } else {
+                    self.meanings = nil
+                    self.meaningsTableView.reloadData()
+                    
+                }
+                
+                
             })
 
         }
+    }
+}
+
+extension SearchViewController:UISearchBarDelegate {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        // Stop doing the search stuff
+        // and clear the text in the search bar
+        searchBar.text = ""
+        // Hide the cancel button
+        searchBar.showsCancelButton = false
+        // You could also change the position, frame etc of the searchBar
     }
 }
     

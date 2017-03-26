@@ -61,8 +61,10 @@ extension Meaning {
                     completionHandler(meanings, nil)
                     
                 } else {
-                    print("Invalid Input")
-                    NotificationCenter.default.post(name: Notification.Name(rawValue: "invalidInput"), object: nil)
+                    let error = NSError(domain: "Invalid Input", code: 123, userInfo: nil)
+                    completionHandler(meanings, error)
+
+//                    NotificationCenter.default.post(name: Notification.Name(rawValue: "invalidInput"), object: nil)
                     
                 }
             }
