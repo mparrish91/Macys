@@ -72,7 +72,10 @@ final class SearchViewController: UIViewController {
         self.view.addSubview(meaningsTableView)
     }
 
-    
+    func clearMeaningsTable() {
+        self.meanings = nil
+        self.meaningsTableView.reloadData()
+    }
 
 
     //MARK: AutoLayout
@@ -118,16 +121,13 @@ extension SearchViewController: UISearchResultsUpdating {
         if let query = searchController.searchBar.text, !query.isEmpty {
             Meaning.retrieveMeanings(query, completionHandler: { (meanings, error) in
                 
+                //if we return back data update the datasource accordingly otherwise clear table
                 if error == nil {
                     self.meanings = meanings
                     self.meaningsTableView.reloadData()
                 } else {
-                    self.meanings = nil
-                    self.meaningsTableView.reloadData()
-                    
+                    self.clearMeaningsTable()
                 }
-                
-                
             })
 
         }
@@ -143,10 +143,14 @@ extension SearchViewController:UISearchBarDelegate {
         searchBar.showsCancelButton = false
         // You could also change the position, frame etc of the searchBar
         
-        //clear datasource
-        self.meanings = nil
-        self.meaningsTableView.reloadData()
+        clearMeaningsTable()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == "" {
+            clearMeaningsTable()
 
+        }
     }
 }
 
