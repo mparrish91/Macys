@@ -26,7 +26,7 @@ extension Meaning {
             else {
                 return nil
         }
-
+        
         self.longForm = longForm
         self.frequency = frequency
         self.since = since

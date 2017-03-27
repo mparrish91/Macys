@@ -4,17 +4,17 @@
 //
 //  Created by parry on 3/22/17.
 //  Copyright © 2017 parry. All rights reserved.
-// 
+//
 // This viewcontroller allows a user to search for an acroynym.  The search is managed by a SearchController. The UISearchResultsUpdating protocol allows for continous searching while the user is typing.  This is a common practice today and I believe the best user experience. Because of the speed of the search I did not see a need for a ProgressHUD
 
 import UIKit
 
 final class SearchViewController: UIViewController {
-
+    
     fileprivate var meaningsTableView: UITableView
     fileprivate var meanings: [Meaning]?
     fileprivate let searchController = UISearchController(searchResultsController: nil)
-
+    
     
     required convenience init?(coder aDecoder: NSCoder) {
         self.init(aDecoder)
@@ -31,7 +31,7 @@ final class SearchViewController: UIViewController {
         }
     }
     
-
+    
     // MARK: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +41,7 @@ final class SearchViewController: UIViewController {
         meaningsTableView.delegate = self
         meaningsTableView.dataSource = self
         meaningsTableView.backgroundColor = UIColor.black
-
+        
         
         //searchController
         searchController.searchResultsUpdater = self
@@ -71,13 +71,13 @@ final class SearchViewController: UIViewController {
         self.view = UIView()
         self.view.addSubview(meaningsTableView)
     }
-
+    
     func clearMeaningsTable() {
         self.meanings = nil
         self.meaningsTableView.reloadData()
     }
-
-
+    
+    
     //MARK: AutoLayout
     func setConstraints() {
         
@@ -109,7 +109,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             cell.frequencyLabel.text = "frequency: " + String(meaning.frequency)
             cell.sinceLabel.text = "since: " + String(meaning.since)
             cell.meaningLabel.text = meaning.longForm
-
+            
         }
         
         return cell
@@ -129,7 +129,7 @@ extension SearchViewController: UISearchResultsUpdating {
                     self.clearMeaningsTable()
                 }
             })
-
+            
         }
     }
 }
@@ -149,7 +149,7 @@ extension SearchViewController:UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
             clearMeaningsTable()
-
+            
         }
     }
 }
